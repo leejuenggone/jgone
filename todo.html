@@ -7,7 +7,7 @@
 		<script src="jquery-1.11.3.js"></script>
 		<style>
 			* { margin: 0; padding: 0; outline: none;  box-sizing: border-box; }
-			body {outline: none; }
+			body {outline: none; width: 100%; }
 			
 			.clear:after { content: ''; display: block; clear: both; }
 			a {text-decoration: none;}
@@ -34,14 +34,24 @@
 		</div>
 		<script>
             var input = $('input').attr('value','').html();
+			var check = false;
+			
 			$('a').on('click', function(){
 				//$(this).prev().after('<p>'+input+'</p>'); // 기존 value의 데이터를 가져온다.
 				$('a').after('<div class="box">'+'<button type="button" class="check">체크</button>'+'<p>'+$('input').val()+'</p>'+'<button type="button" class="remove">삭제</button>'+'</div>');	// 변경된 value의 데이터를 가져온다.
 				$('.check').on('click', function(){
 					$(this).next().contents().unwrap().wrap('<s></s>');
-					if($(this).next().contents().unwrap().wrap('<s></s>') == '<s></s>'){
-						$(this).next().contents().unwrap().wrap('<p></p>')   
-					}
+					check = !check
+//						console.log($(this).next()[0].localName);
+//					console.log($(this).next()[1].tagName);
+//					console.log('ad',$(this).next().tagName)
+					if(check == true){
+						$(this).next().contents().unwrap().wrap('<p></p>');
+					};
+//					if($(this).next().attr() == '<s></s>'){
+//						
+//						$(this).next().contents().unwrap().wrap('<p></p>')
+//					};
 				});
 				$('.remove').on('click',function(){
 					$(this).parent().remove();
