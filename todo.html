@@ -13,7 +13,7 @@
 			a {text-decoration: none;}
 			div { position: relative; padding-top: 200px; text-align: center;}
 			h1 { font-size: 100px; font-weight: 100; color: #29adff; padding-bottom: 30px; }
-			form {position: relative; width: 500px; margin: 0 auto;}
+			.input_box {position: relative; width: 500px; margin: 0 auto;}
 			input {box-sizing: border-box; float: left; display: block; width: 380px; height: 50px; padding: 0 30px; border: 2px solid #29adff; border-radius: 30px; background: #fff; line-height: 50px; outline: none; font-size: 26px;  }
 			a {position: absolute; top: 0; right: 0; display: block; width: 80px; height: 50px; border: 2px solid #29adff; border-radius: 30px; background: #fff; color:#333; line-height: 50px; outline: none; font-size: 18px; }
 			a:hover { color: #fff; background: #29adff; }
@@ -27,15 +27,23 @@
 	<body>
 		<div>
 			<h1>오늘 할일</h1>
-			<form action="" method="post" class="clear">	
-				<input type="text" value="" placeholder="오늘 할일은 무엇인가요?">
+			<div class="clear input_box">	
+				<input id="input" type="text" value="" placeholder="오늘 할일은 무엇인가요?">
 				<a href="#none">등록</a>
-			</form>
+			</div>
 		</div>
 		<script>
             var input = $('input').attr('value','').html();
 			var check = false;
-			
+			/*
+			$(document).ready(function() {
+				$("#input").keydown(function(key) {
+					if (key.keyCode == 13) {
+						console.log("엔터키를 눌렀습니다.");
+					}
+				});
+			});
+			*/
 			$('a').on('click', function(){
 				//$(this).prev().after('<p>'+input+'</p>'); // 기존 value의 데이터를 가져온다.
 				$('a').after('<div class="box">'+'<button type="button" class="check">체크</button>'+'<p>'+$('input').val()+'</p>'+'<button type="button" class="remove">삭제</button>'+'</div>');	// 변경된 value의 데이터를 가져온다.
