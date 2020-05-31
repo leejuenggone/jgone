@@ -72,11 +72,11 @@
 	<script type="text/javascript">
 		
 		$('a').on('click',function(){
-			$('a').parent().next().css('display','none')
 			if($('a').parent().next().css('display') === 'none'){
 			   $(this).parent().next().css({'display':'block'});
 			}else{
-				$('a').parent().parent().siblings().find('dd').css({'display':'none'});
+//				$('a').parent().next().css('display','none')
+				//$('a').parent().parent().siblings().find('dd').css({'display':'none'});
 			}
 		})
 		
