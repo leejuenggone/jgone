@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=divece-width"/>
+	<script src="jquery-1.11.3.js"></script>
+	<title>Document</title>
+	<style>
+		* { margin: 0; padding: 0; }
+		a { display: block; height: 80px; text-align: center; line-height: 80px; color: #fff; background: #333; text-decoration: none; font-size: 40px;  }
+		a.on { background: #f8bbbb; color: #000;}
+		dd { display: none; height: 300px; background: aqua; }
+	</style>
+</head>
+<body>
+<!--
+	--- method ---
+	Event가 발생했을때 움직임 을 뜻 한다.
+	
+	
+	.show() / .hide() / .toggle()
+	.slideDown() / .slideUp() / .slideToggle()
+	.fadeIn() / .fadeOut() / .fadeToggle() / .fadeTo()
+	위 3가지는 비슷하게 쓸수 있다.
+	
+	.addClass() / .removeClass() / .hasClass() / .toggleClass()
+	
+	.css() / .animeate() / .stop()
+	
+	.on() / .off() 
+	
+	.width() / .height() / .length
+	
+	.eq() / .index()
+	
+	.append() / .prepend() / .after() / .before()
+	.html() / .text()
+	
+	.remove()
+	
+	.attr() / .val()
+	
+	.scrollTop()
+-->	
+<!--
+	<a href="#">버튼</a>
+	<div>box</div>
+	<a href="#">버튼2</a>
+	<div>box</div>
+	<a href="#">버튼3</a>
+	<div>box</div>
+-->	
+
+	<dl>
+		<dt>
+			<a href="#none">질문1</a>
+		</dt>
+		<dd>답변1</dd>
+	</dl>
+	<dl>
+		<dt>
+			<a href="#none">질문2</a>
+		</dt>
+		<dd>답변1</dd>
+	</dl>
+	<dl>
+		<dt>
+			<a href="#none">질문3</a>
+		</dt>
+		<dd>답변1</dd>
+	</dl>
+	<script type="text/javascript">
+		
+		$('a').on('click',function(){
+			$('a').parent().next().css('display','none')
+			if($('a').parent().next().css('display') === 'none'){
+			   $(this).parent().next().css({'display':'block'});
+			}else{
+				$('a').parent().parent().siblings().find('dd').css({'display':'none'});
+			}
+		})
+		
+		
+		
+		
+		
+//		  var selectedDl = null
+//       $('dl').on('click',function(){
+//          selectedDl=$(this)
+//          selectedDl.find('dd').css('display','block')
+//          selectedDl.siblings().find('dd').css('display','none')
+//       })
+      
+      
+       
+//       $('a').on('click',function(){
+//           $('a').parent().next().css('display','none')
+//           if($(this).parent().next().css('display')==='none'){
+//                $(this).parent().next().css('display','block')
+//           }       
+//       })
+
+		/*
+       var $aEl = $('a')
+       $aEl.on('click',function(){
+          var $ddEl = $(this).parent().next() 
+          $aEl.parent().next().css('display','none')
+           if($ddEl.css('display')==='none'){
+                $ddEl.css('display','block')
+           }       
+       })
+		*/
+		
+		
+		/*
+		var a = document.querySelectorAll("a");
+		var dd = document.querySelectorAll("dd");
+		for(i = 0; i < dd.length; i++){
+				dd[i].addEventListener("click", () => {
+				console.log(i)
+			})	
+		}
+		*/	
+		
+//		$('a').on('click',function(){
+//			var btn = $(this).parent().next(); 
+//			if($(btn).css("display") == 'none'){
+//			   $(this).parent().next().css({
+//				   'display':'block'
+//			   })
+//				if($(this).parent().parent().siblings().find('dd').css('display') == 'block'){
+//				   $(this).parent().parent().siblings().find('dd').css({'display':'none'})
+//				}
+//			}
+//		})
+		
+		// 숙제
+		// - toggle 기능을  if 문을 이용해서 만들것.(QnA, tab)
+		// - jquery5 번 만들어 오셈.
+		// - 이벤트는 클릭 한개만 사용.
+		// - toggle / addClass / show / hide 사용 하지 말것.
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
