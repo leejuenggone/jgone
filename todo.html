@@ -6,22 +6,63 @@
 		<title> Todo list </title>
 		<script src="jquery-1.11.3.js"></script>
 		<style>
-			* { margin: 0; padding: 0; }
-			div {overflow: hidden; padding-top: 200px; text-align: center;}
-			h1 { font-size: 100px; font-weight: 100; color: #29adff; }
-			form {width:400px;  margin: 0 auto; }
-			input {float: left; display: block; width: 300px; height: 50px; padding: 0 30px; border: 1px solid #29adff; border-radius: 30px; background: #fff; line-height: 50px; outline: none; font-size: 26px;  }
-			button {float: left; display: block; width: 80px; height: 50px; border: 1px solid #29adff; border-radius: 30px; background: #fff; line-height: 50px; outline: none; font-size: 18px;}
-			button:hover { color: #fff; background: #29adff; }
+			* { margin: 0; padding: 0; outline: none;  box-sizing: border-box; }
+			body {outline: none; }
+			
+			.clear:after { content: ''; display: block; clear: both; }
+			a {text-decoration: none;}
+			div { position: relative; padding-top: 200px; text-align: center;}
+			h1 { font-size: 100px; font-weight: 100; color: #29adff; padding-bottom: 30px; }
+			form {position: relative; width: 500px; margin: 0 auto;}
+			input {box-sizing: border-box; float: left; display: block; width: 380px; height: 50px; padding: 0 30px; border: 2px solid #29adff; border-radius: 30px; background: #fff; line-height: 50px; outline: none; font-size: 26px;  }
+			a {position: absolute; top: 0; right: 0; display: block; width: 80px; height: 50px; border: 2px solid #29adff; border-radius: 30px; background: #fff; color:#333; line-height: 50px; outline: none; font-size: 18px; }
+			a:hover { color: #fff; background: #29adff; }
+			div.box { display: flex; justify-content: space-between; padding: 0 20px; margin-top: 30px; float: left;  width: 100%; height: 30px; }
+			div.box > button { width: 50px; height: 30px; border-radius: 15px; background: none; border: 2px solid #29adff; color: #333; cursor: pointer; }
+			div.box > button:hover { background: #29adff; border: none; color: #fff; }
+			p {  text-align: center; line-height: 30px; font-size: 20px;}
+			s { text-align: center; line-height: 30px; font-size: 20px; color: #999; }
 		</style>
 	</head>
 	<body>
 		<div>
 			<h1>오늘 할일</h1>
-			<form action="" method="post">
-				<input type="text">
-				<button type="button">확인</button>
+			<form action="" method="post" class="clear">	
+				<input type="text" value="" placeholder="오늘 할일은 무엇인가요?">
+				<a href="#none">등록</a>
 			</form>
 		</div>
+		<script>
+            var input = $('input').attr('value','').html();
+			$('a').on('click', function(){
+				//$(this).prev().after('<p>'+input+'</p>'); // 기존 value의 데이터를 가져온다.
+				$('a').after('<div class="box">'+'<button type="button" class="check">체크</button>'+'<p>'+$('input').val()+'</p>'+'<button type="button" class="remove">삭제</button>'+'</div>');	// 변경된 value의 데이터를 가져온다.
+				$('.check').on('click', function(){
+					$(this).next().contents().unwrap().wrap('<s></s>');
+					if($(this).next().contents().unwrap().wrap('<s></s>') == '<s></s>'){
+						$(this).next().contents().unwrap().wrap('<p></p>')   
+					}
+				});
+				$('.remove').on('click',function(){
+					$(this).parent().remove();
+				});
+			});
+			/*
+			$("input").keydown(function(key) {
+                if (key.keyCode == 13) {
+                    $('.clear_input').next().after('<div class="box">'+'<button type="button" class="check">체크</button>'+'<p>'+$('input').val()+'</p>'+'<button type="button" class="remove">삭제</button>'+'</div>');
+					console.log("엔터키를 눌렀습니다.");
+                };
+            });
+			*/
+
+			
+			//console.log($('input').attr('type'));
+			
+			/*
+			.attr() - 속성 검색 및 추가
+			.val() - value 값 검색
+			*/
+		</script>
 	</body>
 </html>
